@@ -2,109 +2,120 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
     min-height: 100vh;
-    background: linear-gradient(135deg, #000000, #1a1a1a, #2c003e);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #2b0036);
+    background-size: 300% 300%;
+    animation: bgMove 8s ease infinite;
     padding: 20px;
 }
 
-/* Main Container */
+@keyframes bgMove{
+    0%{background-position: 0% 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0% 50%;}
+}
+
 .container{
     width: 100%;
-    max-width: 450px;
+    max-width: 420px;
 }
 
-/* Card */
 .to-do{
-    background: #111;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(255, 0, 255, 0.25);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    transition: 0.3s ease;
 }
 
-/* Heading */
+.to-do:hover{
+    transform: translateY(-5px);
+}
+
 .to-do h2{
     color: #fff;
     text-align: center;
     margin-bottom: 20px;
+    font-weight: 600;
     letter-spacing: 1px;
-    font-size: 24px;
 }
 
-/* Input Row */
 .row{
     display: flex;
     gap: 10px;
 }
 
-/* Input */
 input{
     flex: 1;
     padding: 12px 15px;
-    border-radius: 25px;
+    border-radius: 30px;
     border: none;
     outline: none;
-    background: #222;
-    color: #fff;
+    background: #1e1e1e;
+    color: white;
     font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus{
+    box-shadow: 0 0 10px #a100ff;
 }
 
 input::placeholder{
     color: #aaa;
 }
 
-/* Button */
 button{
     padding: 12px 20px;
+    border-radius: 30px;
     border: none;
-    border-radius: 25px;
-    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    background: linear-gradient(45deg, #a100ff, #ff0080);
     color: white;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
     transition: 0.3s ease;
 }
 
 button:hover{
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #ff00cc;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px #ff0080;
 }
 
-/* Task List */
 ul{
-    margin-top: 20px;
     list-style: none;
+    margin-top: 20px;
 }
 
 ul li{
-    background: #1c1c1c;
-    padding: 12px;
+    background: #1a1a1a;
+    padding: 12px 15px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease;
     position: relative;
     word-wrap: break-word;
 }
 
 ul li:hover{
-    background: #2a2a2a;
+    background: #262626;
+    transform: scale(1.02);
 }
 
 ul li.checked{
     text-decoration: line-through;
-    color: #888;
-    background: #141414;
+    opacity: 0.6;
 }
 
-/* Delete Button */
 ul li span{
     position: absolute;
     right: 15px;
@@ -114,27 +125,13 @@ ul li span{
     cursor: pointer;
 }
 
-/* 📱 Mobile Responsive */
-@media (max-width: 480px){
-
-    .to-do{
-        padding: 20px;
-    }
-
-    .to-do h2{
-        font-size: 20px;
-    }
-
+/* 📱 Mobile */
+@media(max-width:480px){
     .row{
         flex-direction: column;
-        gap: 12px;
     }
 
     button{
-        width: 100%;
-    }
-
-    input{
         width: 100%;
     }
 }
